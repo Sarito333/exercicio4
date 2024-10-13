@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qual maior número</title>
+    <link rel="stylesheet" type="text/css" href="maior_num.css">
+</head>
+<body>
+    <h1>Qual é o maior número?</h1>
+  <form class="forma">
+    <label for="num1" class="num1">Digite o primeiro número: </label>
+    <input type="text" id="numero1" />
+    <br />
+    <label for="num2" class="num2">Digite o segundo número: </label>
+    <input type="text" id="numero2" />
+    <br />
+    <button onclick="compararNumeros()" class="botao">Comparar</button>
+    <br />
+    <label for="resultado" class="resul">Resultado:</label>
+  </br>
+    <textarea id="resultadototal" name="resultado" placeholder="Aguardando resultado" class="caixa"></textarea>
+  </form>
+
+  <script>
+    function compararNumeros() {
+  
+    var num1 = parseInt(document.getElementById("numero1").value);
+    var num2 = parseInt(document.getElementById("numero2").value);
+
+    if (num1 > num2) {
+    document.getElementById("resultadototal").value = "O número " + num1 + " é maior que o número " + num2 + ".";
+    } else if (num1 < num2) {
+    document.getElementById("resultadototal").value = "O número " + num2 + " é maior que o número " + num1 + ".";
+    } else {
+    document.getElementById("resultadototal").value = "Os números " + num1 + " e " + num2 + " são iguais.";
+    }
+}
+
+  </script>
+</body>
+</html>

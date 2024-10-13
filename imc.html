@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Índice de massa corporal</title>
+    <link rel="stylesheet" type="text/css" href="imc.css">
+</head>
+<body>
+    <form>
+      <h1>Calculando de IMC</h1>
+        <table>
+          <tr>
+            <th>Altura (m):</th>
+            <td><input type="number" id="altura" name="altura"></td>
+          </tr>
+          <tr>
+            <th>Peso (kg):</th>
+            <td><input type="number" id="peso" name="peso"></td>
+          </tr>
+          <tr>
+            <th>Sexo:</th>
+            <td>
+              <select id="sexo" name="sexo">
+                <option value="Genero">Gênero</option>
+                <option value="Masculino">Masculino</option>
+                <option value="Feminino">Feminino</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <th>IMC:</th>
+            <td><input type="text" id="imc" name="imc" readonly></td>
+          </tr>
+          <tr>
+            <th>Categoria:</th>
+            <td><input type="text" id="categoria" name="categoria" readonly></td>
+          </tr>
+        </table>
+        <input type="button" class="botao" value="Calcular IMC" onclick="calcularIMC()">
+      </form>
+      <h2 class="fonte">Resultados Fixos para Todos os Pesos</h2>
+  <table>
+    <tr>
+      <th>Peso (kg)</th>
+      <th>IMC (Homens)</th>
+      <th>Categoria (Homens)</th>
+      <th>IMC (Mulheres)</th>
+      <th>Categoria (Mulheres)</th>
+    </tr>
+    <tr>
+      <td>40</td>
+      <td>18.5</td>
+      <td>Magro</td>
+      <td>16.5</td>
+      <td>Magro</td>
+    </tr>
+    <tr>
+      <td>50</td>
+      <td>20.5</td>
+      <td>Normal</td>
+      <td>18.5</td>
+      <td>Normal</td>
+    </tr>
+    <tr>
+      <td>60</td>
+      <td>22.5</td>
+      <td>Sobrepeso</td>
+      <td>20.5</td>
+      <td>Sobrepeso</td>
+    </tr>
+    <tr>
+      <td>70</td>
+      <td>24.5</td>
+      <td>Obeso</td>
+      <td>22.5</td>
+      <td>Obeso</td>
+    </tr>
+    <tr>
+      <td>80</td>
+      <td>26.5</td>
+      <td>Obeso</td>
+      <td>24.5</td>
+      <td>Obeso</td>
+    </tr>
+    <!-- adicione mais linhas para outros pesos -->
+  </table>
+
+    
+      <script>
+        function calcularIMC() {
+          var altura = parseFloat(document.getElementById("altura").value);
+          var peso = parseFloat(document.getElementById("peso").value);
+          var sexo = document.getElementById("sexo").value;
+          var imc = peso / (altura * altura);
+          var categoria;
+    
+          if (sexo === "Masculino") {
+            if (imc < 18.5) {
+              categoria = "Magro";
+            } else if (imc < 25) {
+              categoria = "Normal";
+            } else if (imc < 30) {
+              categoria = "Sobrepeso";
+            } else {
+              categoria = "Obeso";
+            }
+          } else if (sexo === "Feminino") {
+            if (imc < 16.5) {
+              categoria = "Magro";
+            } else if (imc < 22) {
+              categoria = "Normal";
+            } else if (imc < 27) {
+              categoria = "Sobrepeso";
+            } else {
+              categoria = "Obeso";
+            }
+          }
+    
+          document.getElementById("imc").value = imc.toFixed(2);
+          document.getElementById("categoria").value = categoria;
+        }
+      </script>
+</body>
+</html>

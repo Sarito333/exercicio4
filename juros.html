@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculo de juros</title>
+    <script src="juros.js"></script>
+</head>
+<body>
+    <form>
+        <label for="valorTotal">Valor Total da Compra:</label>
+        <input type="number" id="valorTotal" required><br><br>
+        <label for="parcelas">Quantidade de Parcelas:</label>
+        <input type="number" id="parcelas" required><br><br>
+        <button onclick="calcularParcelas()">Calcular Parcelas</button>
+        <div id="resultado"></div>
+      </form>
+    
+      <script>
+        function calcularParcelas() {
+          var valorTotal = parseFloat(document.getElementById('valorTotal').value);
+          var parcelas = parseInt(document.getElementById('parcelas').value);
+          var juros = 0.05; // juros de 5% ao mês
+          var valorParcela = valorTotal / parcelas;
+          var valorParcelaComJuros = valorParcela * (1 + juros);
+    
+          document.getElementById('resultado').innerHTML = "Valor de cada parcela: R$ " + valorParcelaComJuros.toFixed(2);
+        }
+
+        
+      </script>
+</body>
+</html>

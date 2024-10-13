@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 6</title>
+
+    <style>
+        table {
+          border-collapse: collapse;
+          border: 1px solid #ccc;
+          background-color: #f0f0f0;
+        }
+        th, td {
+          border: 1px solid #ccc;
+          padding: 10px;
+        }
+      </style>
+</head>
+<body>
+    <form>
+        <table>
+          <tr>
+            <th>Valor do Produto:</th>
+            <td><input type="number" id="valorProduto" name="valorProduto"></td>
+          </tr>
+          <tr>
+            <th>Condição de Pagamento:</th>
+            <td>
+              <select id="condicaoPagamento" name="condicaoPagamento">
+                <option value="À Vista">À Vista</option>
+                <option value="Cartão de Crédito">Cartão de Crédito</option>
+                <option value="Cheque">Cheque</option>
+                <option value="Boleto">Boleto</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <th>Valor Real do Produto:</th>
+            <td><input type="text" id="valorReal" name="valorReal" readonly></td>
+          </tr>
+          <tr>
+            <th>Valor a Ser Pago:</th>
+            <td><input type="text" id="valorPagar" name="valorPagar" readonly></td>
+          </tr>
+        </table>
+        <input type="button" value="Calcular" onclick="calcularPagamento()">
+      </form>
+    
+      <script>
+        function calcularPagamento() {
+          var valorProduto = parseFloat(document.getElementById("valorProduto").value);
+          var condicaoPagamento = document.getElementById("condicaoPagamento").value;
+          var valorReal = valorProduto;
+          var valorPagar;
+    
+          switch (condicaoPagamento) {
+            case "À Vista":
+              valorPagar = valorReal * 0.9;
+              break;
+            case "Cartão de Crédito":
+              valorPagar = valorReal * 0.95;
+              break;
+            case "Cheque":
+              valorPagar = valorReal * 0.98;
+              break;
+            case "Boleto":
+              valorPagar = valorReal * 1.02;
+              break;
+          }
+    
+          document.getElementById("valorReal").value = valorReal.toFixed(2);
+          document.getElementById("valorPagar").value = valorPagar.toFixed(2);
+        }
+      </script>
+</body>
+</html>
